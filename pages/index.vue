@@ -1,95 +1,169 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+  <div>
+    <v-layout column justify-center align-center my-12>
+      <v-avatar size="140">
+        <img src="/logo.png" alt="JC Valencia" />
+      </v-avatar>
+      <h1 class="text-h1">Hi! I am <span class="primary--text">JC.</span></h1>
+      <h4 class="text-h4">Full Stack Developer</h4>
+      <v-btn small class="mt-6">
+        <v-icon left>mdi-file-pdf</v-icon>
+        Download my Résumé
+      </v-btn>
+    </v-layout>
+    <!-- About Me -->
+    <v-layout column my-5>
+      <h3 class="text-h3 mb-4">About Me</h3>
+      <p>
+        Hi. Et qui proident adipisicing ipsum cillum. Eiusmod do est eiusmod
+        veniam id cupidatat aute elit. Duis sit dolor proident consectetur
+        exercitation eiusmod. Excepteur proident id dolor adipisicing. Ullamco
+        sit non aliqua officia Lorem ullamco sunt velit non esse pariatur ex. Eu
+        eu fugiat pariatur ex exercitation tempor magna proident amet.
+      </p>
+    </v-layout>
+    <!-- Career and Achievements -->
+    <v-layout column my-5>
+      <h3 class="text-h3 mb-4">Career</h3>
+      <p>
+        Hi. Et qui proident adipisicing ipsum cillum. Eiusmod do est eiusmod
+        veniam id cupidatat aute elit.
+      </p>
+      <v-timeline class="mb-6">
+        <v-timeline-item
+          v-for="(career, careerKey) in career"
+          :key="careerKey"
+          :color="career.color"
+          :icon="career.icon"
+          fill-dot
+          small
+        >
+          <template v-slot:opposite>
+            <span
+              :class="`headline font-weight-bold`"
+              v-text="career.year"
+            ></span>
+          </template>
+          <div class="py-4">
+            <h2 :class="`headline font-weight-light mb-4`">
+              {{ career.title }}
+            </h2>
+            <div>{{ career.description }}</div>
           </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+        </v-timeline-item>
+      </v-timeline>
+    </v-layout>
+    <!-- Skills & Tecnologies -->
+    <v-layout column my-5>
+      <h3 class="text-h3 mb-4">Skills & Technologies</h3>
+      <p>
+        Hi. Et qui proident adipisicing ipsum cillum. Eiusmod do est eiusmod
+        veniam id cupidatat aute elit. Duis sit dolor proident consectetur
+        exercitation eiusmod. Excepteur proident id dolor adipisicing. Ullamco
+        sit non aliqua officia Lorem ullamco sunt velit non esse pariatur ex. Eu
+        eu fugiat pariatur ex exercitation tempor magna proident amet.
+      </p>
+      <v-row justify="center" align-content="center">
+        <v-col
+          v-for="(skill, skillKey) in skills"
+          :key="skillKey"
+          :sm="getSm(skills)"
+          class="my-2"
+        >
+          <v-card class="fill-height">
+            <v-card-title
+              class="d-flex justify-center align-center flex-column"
+            >
+              <h5 class="text-h5">{{ skill.name }}</h5>
+              <v-rating
+                v-model="skill.rating"
+                half-increments
+                readonly
+                large
+                half-icon="mdi-star-half-full"
+              ></v-rating>
+            </v-card-title>
+            <v-card-text>
+              <h6 class="text-h6">Technologies</h6>
+              <ul>
+                <li v-for="(tech, i) in skill.tech" :key="i">{{ tech }}</li>
+              </ul>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-layout>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+  data: () => ({
+    career: [
+      {
+        title: 'Lorem Ipsum',
+        description:
+          'Lorem Ipsum dolor sit amet consectatur adepiscing elit. sad asjdkllasjlkdllasl asd',
+        color: 'primary',
+        icon: 'mdi-heart',
+        year: '1960',
+      },
+      {
+        title: 'Lorem Ipsum',
+        description:
+          'Lorem Ipsum dolor sit amet consectatur adepiscing elit. dsa dsak kjlsa sa as dasd sad as',
+        color: 'primary',
+        icon: 'mdi-trophy',
+        year: '1970',
+      },
+    ],
+    skills: [
+      {
+        name: 'Frontend Web Development',
+        rating: 4.5,
+        tech: ['VueJS', 'Nuxt', 'Angular 6+', 'ReactJS'],
+      },
+      {
+        name: 'Backend Web Development',
+        rating: 4,
+        tech: ['NestJS'],
+      },
+      {
+        name: 'Database Management',
+        rating: 4,
+        tech: ['MySQL', 'PostgreSQL'],
+      },
+      {
+        name: 'Mobile Development',
+        rating: 3.5,
+        tech: ['React Native'],
+      },
+      {
+        name: 'Testing',
+        rating: 3,
+        tech: ['Jest'],
+      },
+      {
+        name: 'Dev Ops',
+        rating: 2,
+        tech: ['Netlify'],
+      },
+      {
+        name: 'Others',
+        rating: 2,
+        tech: ['Git'],
+      },
+    ],
+  }),
+  methods: {
+    getSm(array) {
+      const length = (array && array.length) || 0
+      if (length > 0 && length < 2) {
+        return 12 / length
+      } else {
+        return 6
+      }
+    },
   },
 }
 </script>
