@@ -16,16 +16,27 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: 'Full Stack Developer | Juan Carlo Valencia',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: "Juan Carlo Valencia's Resume for Full Stack Developer",
       },
+      {
+        name: 'keywords',
+        content:
+          'full stack developer,juan carlo valencia,blackraspberryyy,frontend,backend,mobile,development,resume,portfolio',
+      },
+      {
+        property: 'og:title',
+        content: 'Juan Carlo Valencia | Full Stack Developer',
+      },
+      { property: 'og:site_name', content: 'Juan Carlo Valencia' },
+      { property: 'og:type', content: 'website' },
+      { name: 'robots', content: 'index,follow' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -39,12 +50,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/global.scss'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/breakpoint'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -91,11 +102,13 @@ export default {
           success: colors.green.accent3,
           _black: colors.black,
           _white: colors.white,
+          _grey: colors.grey.lighten4,
         },
         dark: {
           accent: colors.grey.lighten3,
           _black: colors.white,
           _white: colors.black,
+          _grey: colors.grey.darken4,
         },
       },
     },
