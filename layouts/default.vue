@@ -2,17 +2,7 @@
   <v-app class="app">
     <v-tooltip left>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          fixed
-          fab
-          top
-          right
-          small
-          color="_black"
-          v-bind="attrs"
-          v-on="on"
-          @click="darkMode"
-        >
+        <v-btn fixed fab top right small color="_black" v-bind="attrs" v-on="on" @click="darkMode">
           <v-icon>mdi-weather-night</v-icon>
         </v-btn>
       </template>
@@ -25,12 +15,7 @@
       <v-card flat tile class="text-center _grey" width="100%">
         <v-card-text>
           <h5 class="text-h5 mb-4">Get in Touch</h5>
-          <v-layout
-            justify-center
-            align-center
-            my-2
-            :column="this.$breakpoint.smAndDown"
-          >
+          <v-layout justify-center align-center my-2 :column="$breakpoint.smAndDown">
             <div class="mx-4 contact-deets">
               <v-icon>mdi-phone</v-icon>
               <span class="body-1">{{ mobilePhone }}</span>
@@ -58,10 +43,7 @@
           </v-tooltip>
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-text>
-          All Rights Reserved &copy;
-          {{ new Date().getFullYear() }}
-        </v-card-text>
+        <v-card-text>Copyright {{ new Date().getFullYear() }} @ Juan Carlo Valencia</v-card-text>
       </v-card>
     </v-footer>
   </v-app>
