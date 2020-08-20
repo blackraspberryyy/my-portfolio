@@ -60,7 +60,7 @@
                 v-text="education.school"
               ></v-list-item-title>
               <v-list-item-subtitle
-                v-if="education.course"
+                v-show="education.course"
                 v-text="education.course"
                 class="no-wrap font-italic"
               ></v-list-item-subtitle>
