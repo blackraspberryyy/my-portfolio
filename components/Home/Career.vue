@@ -1,6 +1,10 @@
 <template>
-  <v-layout column my-5>
-    <h4 class="text-h4 mb-4" :class="{'text-h5': $breakpoint.smAndDown}" v-text="title"></h4>
+  <v-layout column>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      v-text="title"
+    ></h4>
     <v-timeline class="mb-6" :dense="$breakpoint.smAndDown">
       <v-timeline-item
         v-for="(career, careerKey) in careers"
@@ -10,7 +14,10 @@
         fill-dot
       >
         <template v-slot:opposite>
-          <span :class="`font-weight-bold ${career.color}--text`" v-text="career.year"></span>
+          <span
+            :class="`font-weight-bold ${career.color}--text`"
+            v-text="career.year"
+          ></span>
         </template>
         <div class="py-2">
           <v-chip small :color="career.color" class="white--text mb-2">
@@ -18,7 +25,9 @@
             <v-icon right small class="px-1" v-text="career.icon"></v-icon>
           </v-chip>
           <h5 class="text-h6" v-text="career.title"></h5>
-          <span v-if="$breakpoint.smAndDown" class="text-subtitle-1">({{ career.year }})</span>
+          <span v-if="$breakpoint.smAndDown" class="text-subtitle-1"
+            >({{ career.year }})</span
+          >
           <p class="body-1 mt-2" v-text="career.description"></p>
         </div>
       </v-timeline-item>

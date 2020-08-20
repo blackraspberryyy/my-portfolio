@@ -1,6 +1,10 @@
 <template>
-  <v-layout column my-5>
-    <h4 class="text-h4 mb-4" :class="{'text-h5': $breakpoint.smAndDown}" v-text="title"></h4>
+  <v-layout column>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      v-text="title"
+    ></h4>
     <v-row>
       <v-col
         v-for="(hobby, hobbyKey) in hobbies"
@@ -14,11 +18,14 @@
             <div class="overline" v-text="hobby.category"></div>
             <h5
               class="text-h5 mb-1"
-              :class="{'text-h6' :$breakpoint.smAndDown}"
+              :class="{ 'text-h6': $breakpoint.smAndDown }"
               v-text="hobby.title"
             ></h5>
           </v-card-title>
-          <v-card-text style="line-height: 1.4em;" v-html="hobby.description"></v-card-text>
+          <v-card-text
+            style="line-height: 1.4em;"
+            v-html="hobby.description"
+          ></v-card-text>
         </v-card>
       </v-col>
     </v-row>

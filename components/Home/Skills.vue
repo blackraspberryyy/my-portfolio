@@ -1,6 +1,10 @@
 <template>
-  <v-layout column my-5>
-    <h4 class="text-h4 mb-4" :class="{'text-h5': $breakpoint.smAndDown}" v-text="title"></h4>
+  <v-layout column>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      v-text="title"
+    ></h4>
     <v-row justify="center" align-content="center">
       <v-col
         v-for="(skill, skillKey) in skills"
@@ -51,7 +55,14 @@ export default {
           name: 'Frontend Web Development',
           img: '/frontend.svg',
           rating: 4.5,
-          tech: ['VueJS', 'Nuxt.js', 'Angular 6+', 'ReactJS'],
+          tech: [
+            'VueJS',
+            'Nuxt.js',
+            'Vuetify',
+            'Angular 6+',
+            'Angular Material',
+            'ReactJS',
+          ],
         },
 
         {
@@ -70,7 +81,7 @@ export default {
           name: 'Mobile Development',
           img: '/mobileDev.svg',
           rating: 3.5,
-          tech: ['React Native'],
+          tech: ['React Native', 'Android (Java)'],
         },
         {
           name: 'Testing',
