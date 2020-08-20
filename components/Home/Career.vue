@@ -25,7 +25,7 @@
             <v-icon right small class="px-1" v-text="career.icon"></v-icon>
           </v-chip>
           <h5 class="text-h6" v-text="career.title"></h5>
-          <span v-if="$breakpoint.smAndDown" class="text-subtitle-1"
+          <span v-show="$breakpoint.smAndDown" class="text-subtitle-1"
             >({{ career.year }})</span
           >
           <p class="body-1 mt-2" v-text="career.description"></p>

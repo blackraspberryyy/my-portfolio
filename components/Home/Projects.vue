@@ -1,5 +1,5 @@
 <template>
-  <v-layout column align-center justify-center>
+  <v-layout column>
     <h4
       class="text-h4 mb-4"
       :class="{ 'text-h5': $breakpoint.smAndDown }"
@@ -20,9 +20,9 @@
               eager
               :src="project.src"
               :contain="project.contain"
-              :aspect-ratio="$breakpoint.smAndDown ? 1.33333 : 1.77778"
+              :aspect-ratio="$breakpoint.smAndDown ? '1.33333' : '1.77778'"
             >
-              <v-card-title class="justify-end" v-if="project.link">
+              <v-card-title class="justify-end" v-show="project.link">
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -42,26 +42,24 @@
             </v-img>
             <v-card-text>
               <h6 class="text-h6" v-text="project.name"></h6>
-              <div>
-                <v-chip
-                  v-for="(tech, techKey) in project.techs"
-                  :key="techKey"
-                  color="primary"
-                  small
-                  class="mr-1"
-                  v-text="tech"
-                ></v-chip>
-              </div>
+              <v-chip
+                v-for="(tech, techKey) in project.techs"
+                :key="techKey"
+                color="primary"
+                small
+                class="mr-1"
+                >{{ tech }}</v-chip
+              >
               <p class="mt-6" v-text="project.description"></p>
             </v-card-text>
           </v-card>
         </v-hover>
       </v-col>
     </v-row>
-    <v-btn class="mt-6" :small="$breakpoint.smAndDown">
-      <v-icon class="mr-2">mdi-github</v-icon> Complete List of
-      Repositories</v-btn
-    >
+    <v-btn class="mt-6 align-self-center" :small="$breakpoint.smAndDown">
+      <v-icon class="mr-2">mdi-github</v-icon>
+      <span>Complete List of Repositories</span>
+    </v-btn>
   </v-layout>
 </template>
 <script>
