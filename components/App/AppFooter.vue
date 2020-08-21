@@ -47,7 +47,7 @@ export default {
       fixed: false,
       contactMe: {
         title: 'Contact Me',
-        description: "Feel free with connect to me. Let's have a chat.",
+        description: "Feel free to connect with me. Let's have a chat.",
         mobilePhone: {
           icon: 'mdi-phone',
           description: '+639474263372',
