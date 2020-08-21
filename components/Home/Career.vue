@@ -1,10 +1,6 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.smAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-timeline class="mb-6" :dense="$breakpoint.smAndDown">
       <v-timeline-item
         v-for="(career, careerKey) in careers"
@@ -14,20 +10,15 @@
         fill-dot
       >
         <template v-slot:opposite>
-          <span
-            :class="`font-weight-bold ${career.color}--text`"
-            v-text="career.year"
-          ></span>
+          <span :class="`font-weight-bold ${career.color}--text`" v-text="career.year"></span>
         </template>
         <div class="py-2">
           <v-chip small :color="career.color" class="white--text mb-2">
             {{ career.type }}
             <v-icon right small class="px-1" v-text="career.icon"></v-icon>
           </v-chip>
-          <h5 class="text-h6" v-text="career.title"></h5>
-          <span v-show="$breakpoint.smAndDown" class="text-subtitle-1"
-            >({{ career.year }})</span
-          >
+          <h6 class="text-h6" v-text="career.title"></h6>
+          <span v-show="$breakpoint.smAndDown" class="text-subtitle-1">({{ career.year }})</span>
           <p class="body-1 mt-2" v-text="career.description"></p>
         </div>
       </v-timeline-item>
@@ -54,6 +45,11 @@ export default {
         color: 'purple',
         icon: 'mdi-human-handsup',
       },
+      AWARD: {
+        type: 'Award',
+        color: 'darken-2 amber',
+        icon: 'mdi-medal',
+      },
     }
     return {
       title: 'Achievements & Career',
@@ -63,21 +59,21 @@ export default {
           year: 'November 2014',
           description:
             '3rd Place Finisher on Web Design using Adobe Dreamweaver.',
-          ...careerType.ACHIEVEMENT,
+          ...careerType.AWARD,
         },
         {
           title: 'National CAL Battle of the ICT Wizards Winner',
           year: 'January 2015',
           description:
             '2nd Place Finisher on Web Design using Adobe Dreamweaver.',
-          ...careerType.ACHIEVEMENT,
+          ...careerType.AWARD,
         },
         {
           title: 'Highschool Valedictorian',
           year: 'March 2015',
           description:
             'Graduated Highschool at Sto. Rosario Montessori School Batch 2014-2015, along with other achievements.',
-          ...careerType.ACHIEVEMENT,
+          ...careerType.AWARD,
         },
         {
           title: 'Presidential Scholar of FEU Institute of Technology',
@@ -86,11 +82,25 @@ export default {
           ...careerType.ACHIEVEMENT,
         },
         {
+          title: 'Outstanding Student of A.Y. 2015-2016',
+          year: 'June 2016',
+          description:
+            'Recognized as one of the outstanding student of BS Information Technology.',
+          ...careerType.AWARD,
+        },
+        {
           title: 'Technofest Web Design Competition: Technoweb Champions',
           year: 'March 2017',
           description:
             'Created a site for TechnoWeb Event using plain HTML, CSS, and Javascript.',
-          ...careerType.ACHIEVEMENT,
+          ...careerType.AWARD,
+        },
+        {
+          title: 'Outstanding Student of A.Y. 2016-2017',
+          year: 'July 2017',
+          description:
+            'Recognized as one of the outstanding student of BS Information Technology.',
+          ...careerType.AWARD,
         },
         {
           title: 'Candidate for Technofest Best Capstone Projects 2018',
@@ -114,11 +124,18 @@ export default {
           ...careerType.PARTICIPATED,
         },
         {
+          title: 'Outstanding Student of A.Y. 2018-2019',
+          year: 'July 2019',
+          description:
+            'Recognized as one of the outstanding student of BS Information Technology.',
+          ...careerType.AWARD,
+        },
+        {
           title: 'Cum Laude of Batch 2018-2019',
           year: 'August 2019',
           description:
             'Graduated with 3.48 CGPA with the course of BS Information Technolology with Specialization in Web and Mobile Application.',
-          ...careerType.ACHIEVEMENT,
+          ...careerType.AWARD,
         },
         {
           title: 'Intern @ FEU Institute of Technology',
@@ -131,7 +148,7 @@ export default {
           title: 'Full Stack Developer @ ISBX Phils. Inc.',
           year: 'September 2019 - Present',
           description:
-            'Developed Apps using Angular, NestJS, React Native, and PostgreSQL.',
+            'Developed Apps using Angular, NestJS, Jest, React Native, and PostgreSQL.',
           ...careerType.WORK,
         },
       ],

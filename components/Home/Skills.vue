@@ -1,10 +1,6 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.smAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-row justify="center" align-content="center">
       <v-col
         v-for="(skill, skillKey) in skills"
@@ -35,8 +31,14 @@
           <v-card-text>
             <h6 class="text-overline" v-text="hasExpWith"></h6>
             <ul>
-              <li v-for="(tech, i) in skill.tech" :key="i">{{ tech }}</li>
+              <li v-for="(tech, techKey) in skill.tech" :key="techKey">{{ tech }}</li>
             </ul>
+            <div class="mt-4" v-show="skill.wantTechs">
+              <h6 class="text-overline" v-text="wantExpWith"></h6>
+              <ul>
+                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">{{ want }}</li>
+              </ul>
+            </div>
           </v-card-text>
         </v-card>
       </v-col>
@@ -50,6 +52,7 @@ export default {
     return {
       title: 'Skills & Technologies',
       hasExpWith: 'Has experience with:',
+      wantExpWith: 'Want to learn:',
       skills: [
         {
           name: 'Frontend Web Development',
@@ -63,6 +66,7 @@ export default {
             'Angular Material',
             'ReactJS',
           ],
+          wantTechs: ['Redux', 'React Hooks', 'Django'],
         },
 
         {
@@ -70,30 +74,34 @@ export default {
           img: '/backend.svg',
           rating: 4,
           tech: ['NestJS', 'MySQL', 'PostgreSQL', 'Firebase'],
+          wantTechs: ['MongoDB', 'Mongoose'],
         },
         {
           name: 'Version Control',
           img: '/versionControl.svg',
           rating: 4,
-          tech: ['Git', 'GitFlow'],
+          tech: ['Github', 'GitLab', 'Bitbucket'],
         },
         {
           name: 'Mobile Development',
           img: '/mobileDev.svg',
           rating: 3.5,
           tech: ['React Native', 'Android (Java)'],
+          wantTechs: ['Expo', 'Flutter', 'iOS (Swift)'],
         },
         {
           name: 'Testing',
           img: '/testing.svg',
           rating: 3,
           tech: ['Jest'],
+          wantTechs: ['Automated Testing', 'Cypress'],
         },
         {
           name: 'Dev Ops',
           img: '/devOps.svg',
           rating: 2,
           tech: ['Netlify'],
+          wantTechs: ['Jenkins', 'Travis CI', 'Kubernetes', 'Docker', 'AWS'],
         },
       ],
     }

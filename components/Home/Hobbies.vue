@@ -1,10 +1,6 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.smAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-row>
       <v-col
         v-for="(hobby, hobbyKey) in hobbies"
@@ -22,10 +18,7 @@
               v-text="hobby.title"
             ></h5>
           </v-card-title>
-          <v-card-text
-            style="line-height: 1.4em;"
-            v-html="hobby.description"
-          ></v-card-text>
+          <v-card-text style="line-height: 1.4em;" v-html="hobby.description"></v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -49,14 +42,14 @@ export default {
           title: 'Guitar / Ukelele / Piano',
           img: '',
           description:
-            "I just use these instruments when I feel like I wanted to sing, wanted to play a song, or just wanted to pass time. I'm not very good at it though. I am not pushing myself yet to learn Music Theory and stuff, but maybe someday I will...",
+            "I just use these instruments when I feel like I wanted to sing, wanted to play a song, or just wanted to pass time. I'm not very good at it though. I am not pushing myself to learn Music Theory and stuff yet, but maybe someday...",
           category: '🎸 Music',
         },
         {
           title: 'Games',
           img: '',
           description:
-            'PC, Mobile, and Nintendo Switch Games is the hobby where I spend my time the most. Its addictive, interactive, and requires your full attention. Each game has its own thing and you can always learn from them. ',
+            "PC, Mobile, and Nintendo Switch Games is the hobby where I spend my time the most. It's addictive, interactive, and requires your full attention. Each game has its own thing and you can always learn from them. ",
           category: '🎮 Gaming',
         },
         {
@@ -70,7 +63,7 @@ export default {
           title: 'Learning French',
           img: '',
           description:
-            'I recently tried learning French, using Duolingo App, because my curiousity has been touched by this language. I\'m only a beginner so I know some words and short sentences like: <i>"Bonjour!"</i>, <i>"Je prend mon cafè"</i>, and <i>"Je mange des enfants pour les petit déjeuners"</i>. Just kidding. Don\'t Google Translate it please.',
+            'I recently tried learning French, using Duolingo App, because my curiousity has been touched by this language. I\'m only a beginner so I only know some words and short sentences like: <i>"Bonjour!"</i>, <i>"Je prend mon cafè"</i>, and <i>"Je mange des enfants pour les petit déjeuners"</i>. Just kidding. Don\'t Google Translate it please.',
           category: '🥖 Learning',
         },
         {

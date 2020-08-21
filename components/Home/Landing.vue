@@ -1,5 +1,5 @@
 <template>
-  <v-layout column justify-center align-center my-12>
+  <v-layout column justify-center align-center>
     <v-avatar size="140">
       <img src="/logo.png" alt="JC Valencia" />
     </v-avatar>
@@ -9,9 +9,13 @@
       :class="{ 'text-h3': $breakpoint.smAndDown }"
       v-html="greetings"
     ></h1>
-    <h4 class="text-h4 text-center" :class="{ 'text-h6': $breakpoint.smAndDown }" v-text="role"></h4>
-    <v-chip class="mt-8" :color="status.color">
-      <v-icon left>{{ status.icon }}</v-icon>
+    <h4
+      class="text-h4 text-center"
+      :class="{ 'text-h6': $breakpoint.smAndDown }"
+      v-text="role"
+    ></h4>
+    <v-chip class="mt-12" :color="status.color">
+      <v-icon left class="mr-1">{{ status.icon }}</v-icon>
       {{ status.description }}
     </v-chip>
   </v-layout>
@@ -28,7 +32,7 @@ export default {
       },
       LOOKING: {
         icon: 'mdi-binoculars',
-        description: 'Currently looking for work',
+        description: 'Looking for work',
         color: 'primary',
       },
     }

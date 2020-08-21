@@ -56,7 +56,10 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/breakpoint'],
+  plugins: [
+    '~/plugins/breakpoint',
+    { src: '~/plugins/vue2-scrollspy', ssr: false },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -119,4 +122,36 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  router: {
+    scrollBehavior: async function (to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      }
+
+      const findEl = async (hash, x = 0) => {
+        return (
+          document.querySelector(hash) ||
+          new Promise((resolve) => {
+            if (x > 50) {
+              return resolve(document.querySelector('#app'))
+            }
+            setTimeout(() => {
+              resolve(findEl(hash, ++x || 1))
+            }, 100)
+          })
+        )
+      }
+
+      if (to.hash) {
+        let el = await findEl(to.hash)
+        if ('scrollBehavior' in document.documentElement.style) {
+          return window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
+        } else {
+          return window.scrollTo(0, el.offsetTop)
+        }
+      }
+
+      return { x: 0, y: 0 }
+    },
+  },
 }

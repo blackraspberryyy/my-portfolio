@@ -19,20 +19,31 @@
             <v-card-title class="justify-end" v-show="project.link">
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn small fab v-on="on" v-bind="attrs" color="primary" :href="project.link">
+                  <v-btn
+                    small
+                    fab
+                    v-on="on"
+                    v-bind="attrs"
+                    color="primary"
+                    :href="project.link"
+                    target="_blank"
+                  >
                     <v-icon>mdi-github</v-icon>
                   </v-btn>
                 </template>
-                <span>Github Repository</span>
+                <span class="text-caption">Github Repository</span>
               </v-tooltip>
             </v-card-title>
           </v-img>
           <v-card-text>
             <h6 class="text-h6" v-text="project.name"></h6>
+            <v-chip small class="mr-1">
+              <v-icon v-text="project.icon" left small></v-icon>
+              <span v-text="project.type"></span>
+            </v-chip>
             <v-chip
               v-for="(tech, techKey) in project.techs"
               :key="techKey"
-              color="primary"
               small
               class="mr-1"
             >{{ tech }}</v-chip>
@@ -54,12 +65,15 @@ export default {
     const projectType = {
       SCHOOL: {
         type: 'School Project',
+        icon: 'mdi-school',
       },
       PERSONAL: {
         type: 'Personal Project',
+        icon: 'mdi-account',
       },
       WORK: {
         type: 'Work Project',
+        icon: 'mdi-briefcase',
       },
     }
     return {
@@ -73,14 +87,14 @@ export default {
           techs: ['Nuxt.js', 'Vuetify'],
           link:
             'https://github.com/blackraspberryyy/blackraspberryyy.github.io',
-          ...projectType.SCHOOL,
+          ...projectType.PERSONAL,
         },
         {
           name: 'FEU Curriculum Mapping',
           description:
             'A Web Based Syllabus Generator for FEU Faculty members.',
           src: '/fcm.png',
-          techs: ['VueJS', 'Laravel', 'MySQL'],
+          techs: ['VueJS', 'Vuetify', 'Laravel', 'MySQL'],
           ...projectType.WORK,
         },
         {
@@ -102,12 +116,12 @@ export default {
           ...projectType.SCHOOL,
         },
         {
-          name: 'LocateMyPet App: Pet Locator using NFC',
+          name: 'Pet Manager App with Pet Locator using NFC',
           description:
             "Mobile Based Pet Locating app, in partial fulfillment of PetEx, that uses NFC scanning to the pet's NFC tag on their collars.",
           src: '/petexApp.jpg',
           techs: ['Android (Java)'],
-          link: 'https://github.com/blackraspberryyy/LocateMyPet',
+          link: 'https://github.com/blackraspberryyy/PetEx-Pet-Manager-App',
           ...projectType.SCHOOL,
         },
         {

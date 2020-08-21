@@ -14,7 +14,7 @@
             <span class="text-caption" v-text="contactMe.email.description"></span>
           </v-chip>
         </v-layout>
-        <v-tooltip v-for="(link, i) in contactMe.links" :key="i" top>
+        <v-tooltip v-for="(link, i) in contactMe.links" :key="i" bottom>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               class="mt-2"
@@ -29,13 +29,14 @@
               <v-icon>{{ link.icon }}</v-icon>
             </v-btn>
           </template>
-          <span>{{ link.name }}</span>
+          <span class="text-caption">{{ link.name }}</span>
         </v-tooltip>
+        <div class="text-caption mt-4">Made with Vuetify & Nuxt</div>
       </v-card-text>
       <v-divider></v-divider>
-      <v-card-text
-        class="text-overline"
-      >Copyright {{ new Date().getFullYear() }} @ Juan Carlo Valencia</v-card-text>
+      <v-card-text>
+        <span class="text-overline">Copyright {{ new Date().getFullYear() }} @ Juan Carlo Valencia</span>
+      </v-card-text>
     </v-card>
   </v-footer>
 </template>
