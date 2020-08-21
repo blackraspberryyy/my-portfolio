@@ -24,7 +24,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: "Juan Carlo Valencia's Resume for Full Stack Developer",
+        content: "Juan Carlo Valencia's Portfolio Website.",
       },
       {
         name: 'keywords',
@@ -36,6 +36,10 @@ export default {
         content: 'Juan Carlo Valencia | Full Stack Developer',
       },
       { property: 'og:site_name', content: 'Juan Carlo Valencia' },
+      {
+        property: 'og:description',
+        content: "Juan Carlo Valencia's Portfolio Website.",
+      },
       { property: 'og:type', content: 'website' },
       { name: 'robots', content: 'index,follow' },
     ],
