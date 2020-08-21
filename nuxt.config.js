@@ -41,6 +41,8 @@ export default {
         content: "Juan Carlo Valencia's Portfolio Website.",
       },
       { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: '/logo.png' },
+      { property: 'og:image:alt', content: "Juan Carlo Valencia's Logo" },
       { name: 'robots', content: 'index,follow' },
     ],
     link: [

@@ -1,17 +1,7 @@
-# my-portfolio
+# My Portfolio 🔥
 
-## Build Setup
+[https://blackraspberryyy.github.io/](https://blackraspberryyy.github.io/)
 
-```bash
-# install dependencies
-$ npm install
-# serve with hot reload at localhost:3001
-$ npm run dev
-# build for production and launch server
-$ npm run build
-$ npm run start
-# generate static project
-$ npm run generate
-```
+A simple site where I showcase what I got. That's just it, I guess... Move along.
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Made with Vuetify and Nuxt.
