@@ -1,24 +1,37 @@
 <template>
   <v-layout column>
-    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.mdAndDown }"
+      v-text="title"
+    ></h4>
     <v-row>
       <v-col
         v-for="(hobby, hobbyKey) in hobbies"
         :key="hobbyKey"
-        :sm="getSm(hobbies, 3, 4)"
-        cols="12"
         class="ma-0"
+        v-responsive-col="{
+          md: 3,
+          sm: 2,
+        }"
       >
         <v-card outlined shaped width="100%" class="fill-height">
-          <v-card-title class="d-flex flex-column justify-start align-start">
+          <v-card-title
+            class="d-flex flex-column justify-start align-start"
+            v-scroll-reveal
+          >
             <div class="overline" v-text="hobby.category"></div>
             <h5
               class="text-h5 mb-1"
-              :class="{ 'text-h6': $breakpoint.smAndDown }"
+              :class="{ 'text-h6': $breakpoint.mdAndDown }"
               v-text="hobby.title"
             ></h5>
           </v-card-title>
-          <v-card-text style="line-height: 1.4em;" v-html="hobby.description"></v-card-text>
+          <v-card-text
+            style="line-height: 1.4em;"
+            v-html="hobby.description"
+            v-scroll-reveal
+          ></v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -75,19 +88,6 @@ export default {
         },
       ],
     }
-  },
-  methods: {
-    getSm(array, max, defaultSm) {
-      if (!defaultSm) {
-        defaultSm = 12
-      }
-      const length = (array && array.length) || 0
-      if (length > 0 && length < max) {
-        return 12 / length
-      } else {
-        return defaultSm
-      }
-    },
   },
 }
 </script>

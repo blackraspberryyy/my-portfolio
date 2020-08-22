@@ -2,23 +2,27 @@
   <v-container
     style="max-width: 1024px;"
     class="mb-12"
-    v-scroll-spy="{ offset: $breakpoint.smAndDown ? 56 : 8 }"
+    v-scroll-spy="{ offset: $breakpoint.mdAndDown ? 56 : 8, data: 'section' }"
   >
-    <Landing class="pt-12 pb-8" id="landing" />
-    <AboutMe class="my-8" id="aboutMe" />
-    <Career class="my-8" id="career" />
-    <Skills class="my-8" id="skills" />
-    <Projects class="my-8" id="projects" />
-    <Hobbies class="my-8" id="hobbies" />
+    <template v-for="(sectionComp, sectionKey) in sections">
+      <component
+        :is="sectionComp.section"
+        :key="sectionKey"
+        class="my-12 py-4"
+      ></component>
+    </template>
   </v-container>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import Landing from '@/components/Home/Landing'
 import AboutMe from '@/components/Home/AboutMe'
 import Career from '@/components/Home/Career'
 import Skills from '@/components/Home/Skills'
 import Projects from '@/components/Home/Projects'
+import Hobbies from '@/components/Home/Hobbies'
 
 export default {
   components: {
@@ -27,6 +31,42 @@ export default {
     Career,
     Skills,
     Projects,
+    Hobbies,
+  },
+  data() {
+    return {
+      section: 0,
+      sections: [
+        {
+          section: Landing,
+        },
+        {
+          section: AboutMe,
+        },
+        {
+          section: Career,
+        },
+        {
+          section: Skills,
+        },
+        {
+          section: Projects,
+        },
+        {
+          section: Hobbies,
+        },
+      ],
+    }
+  },
+  watch: {
+    section: function (newSection, oldSection) {
+      this.setSection(newSection)
+    },
+  },
+  methods: {
+    ...mapMutations({
+      setSection: 'app/setSection',
+    }),
   },
 }
 </script>

@@ -2,12 +2,12 @@
   <v-layout column>
     <h4
       class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      :class="{ 'text-h5': $breakpoint.mdAndDown }"
       v-text="title"
     ></h4>
     <p v-text="aboutMe"></p>
-    <v-row class="px-5" :class="{ 'px-0': $breakpoint.smAndDown }">
-      <v-col cols="12" sm="3">
+    <v-row class="px-5" :class="{ 'px-0': $breakpoint.mdAndDown }">
+      <v-col cols="12" sm="6" md="3" v-scroll-reveal>
         <h6 class="text-h6" v-text="infos.name"></h6>
         <v-list class="bg-transparent">
           <v-list-item v-for="(info, infoKey) in infos.items" :key="infoKey">
@@ -24,7 +24,7 @@
           </v-list-item>
         </v-list>
       </v-col>
-      <v-col cols="12" sm="3">
+      <v-col cols="12" sm="6" md="3" v-scroll-reveal>
         <h6 class="text-h6" v-text="workOptions.name"></h6>
         <v-list class="bg-transparent">
           <v-list-item
@@ -44,7 +44,7 @@
           </v-list-item>
         </v-list>
       </v-col>
-      <v-col cols="12" sm="6">
+      <v-col cols="12" sm="12" md="6" v-scroll-reveal>
         <h6 class="text-h6" v-text="educations.name"></h6>
         <v-list class="bg-transparent">
           <v-list-item

@@ -1,16 +1,25 @@
 <template>
   <v-layout column>
-    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.mdAndDown }"
+      v-text="title"
+    ></h4>
     <v-row justify="center" align-content="center">
       <v-col
         v-for="(skill, skillKey) in skills"
         :key="skillKey"
-        :sm="getSm(skills, 3, 4)"
-        cols="12"
+        v-responsive-col="{
+          md: 3,
+          sm: 2,
+        }"
         class="ma-0"
       >
         <v-card class="fill-height">
-          <v-card-title class="d-flex flex-column justify-center align-center">
+          <v-card-title
+            class="d-flex flex-column justify-center align-center"
+            v-scroll-reveal
+          >
             <v-img
               class="flex-1 my-2"
               :src="skill.img"
@@ -28,15 +37,19 @@
               half-icon="mdi-star-half-full"
             ></v-rating>
           </v-card-title>
-          <v-card-text>
+          <v-card-text v-scroll-reveal>
             <h6 class="text-overline" v-text="hasExpWith"></h6>
             <ul>
-              <li v-for="(tech, techKey) in skill.tech" :key="techKey">{{ tech }}</li>
+              <li v-for="(tech, techKey) in skill.tech" :key="techKey">
+                {{ tech }}
+              </li>
             </ul>
             <div class="mt-4" v-show="skill.wantTechs">
               <h6 class="text-overline" v-text="wantExpWith"></h6>
               <ul>
-                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">{{ want }}</li>
+                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">
+                  {{ want }}
+                </li>
               </ul>
             </div>
           </v-card-text>
@@ -105,19 +118,6 @@ export default {
         },
       ],
     }
-  },
-  methods: {
-    getSm(array, max, defaultSm) {
-      if (!defaultSm) {
-        defaultSm = 12
-      }
-      const length = (array && array.length) || 0
-      if (length > 0 && length < max) {
-        return 12 / length
-      } else {
-        return defaultSm
-      }
-    },
   },
 }
 </script>

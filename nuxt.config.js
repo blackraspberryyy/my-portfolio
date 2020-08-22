@@ -64,6 +64,8 @@ export default {
    */
   plugins: [
     '~/plugins/breakpoint',
+    '~/plugins/responsive-col',
+    { src: '~/plugins/vue-scroll-reveal', ssr: false },
     { src: '~/plugins/vue2-scrollspy', ssr: false },
   ],
   /*
@@ -103,7 +105,7 @@ export default {
     theme: {
       themes: {
         light: {
-          primary: colors.blue.darken2,
+          primary: '#3498da',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,

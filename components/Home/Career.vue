@@ -1,7 +1,15 @@
 <template>
   <v-layout column>
-    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
-    <v-timeline class="mb-6" :dense="$breakpoint.smAndDown">
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.mdAndDown }"
+      v-text="title"
+    ></h4>
+    <v-timeline
+      class="mb-6"
+      :dense="$breakpoint.mdAndDown"
+      :class="`${!$breakpoint.mdAndDown ? 'px-12 mx-12' : ''}`"
+    >
       <v-timeline-item
         v-for="(career, careerKey) in careers"
         :key="careerKey"
@@ -10,16 +18,24 @@
         fill-dot
       >
         <template v-slot:opposite>
-          <span :class="`font-weight-bold ${career.color}--text`" v-text="career.year"></span>
+          <span
+            :class="`font-weight-bold ${career.color}--text`"
+            v-text="career.year"
+          ></span>
         </template>
-        <div class="py-2">
+        <div class="py-2" v-scroll-reveal>
           <v-chip small :color="career.color" class="white--text mb-2">
             {{ career.type }}
             <v-icon right small class="px-1" v-text="career.icon"></v-icon>
           </v-chip>
-          <h6 class="text-h6" v-text="career.title"></h6>
-          <span v-show="$breakpoint.smAndDown" class="text-subtitle-1">({{ career.year }})</span>
-          <p class="body-1 mt-2" v-text="career.description"></p>
+          <h6
+            :class="`${$breakpoint.mdAndDown ? 'subtitle-1' : 'text-h6'}`"
+            v-text="career.title"
+          ></h6>
+          <span v-show="$breakpoint.mdAndDown" class="text-subtitle-1"
+            >({{ career.year }})</span
+          >
+          <p class="body-1 mt-2 text-caption" v-text="career.description"></p>
         </div>
       </v-timeline-item>
     </v-timeline>

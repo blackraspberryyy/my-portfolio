@@ -5,8 +5,8 @@
       app
       floating
       disable-resize-watcher
-      :class="{ transparent: !$breakpoint.smAndDown }"
-      :clipped="!$breakpoint.smAndDown"
+      :class="{ transparent: !$breakpoint.mdAndDown }"
+      :clipped="!$breakpoint.mdAndDown"
     >
       <v-list
         shaped
@@ -18,10 +18,10 @@
           :key="linkKey"
           link
           class="link"
-          @click="drawer = $breakpoint.smAndDown ? !drawer : !!drawer"
+          @click="drawer = $breakpoint.mdAndDown ? !drawer : !!drawer"
         >
           <v-list-item-content>
-            <v-list-item-title v-text="link.title"> </v-list-item-title>
+            <v-list-item-title v-text="link.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -29,14 +29,30 @@
 
     <v-app-bar
       app
-      flat
-      class="transparent"
-      :clipped-left="!$breakpoint.smAndDown"
-      :hide-on-scroll="$breakpoint.smAndDown"
+      :dense="$breakpoint.mdAndDown"
+      :color="`${$breakpoint.mdAndDown ? 'primary' : 'none'}`"
+      :class="`${$breakpoint.mdAndDown ? 'opacity' : 'transparent'}`"
+      :flat="!$breakpoint.mdAndDown"
+      :clipped-left="!$breakpoint.mdAndDown"
+      :inverted-scroll="$breakpoint.mdAndDown"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-slide-x-transition>
+        <v-toolbar-title
+          class="text-overline"
+          v-text="links[activeSection].title"
+          v-show="(!$breakpoint.mdAndDown && drawer) || $breakpoint.mdAndDown"
+          >Page title</v-toolbar-title
+        >
+      </v-slide-x-transition>
       <v-spacer></v-spacer>
-      <v-btn class="app-btn" fab small @click="darkMode()">
+      <v-btn
+        class="app-btn"
+        :small="!$breakpoint.mdAndDown"
+        :fab="!$breakpoint.mdAndDown"
+        :icon="$breakpoint.mdAndDown"
+        @click="darkMode()"
+      >
         <v-icon>mdi-weather-night</v-icon>
       </v-btn>
     </v-app-bar>
@@ -49,7 +65,6 @@
         bottom
         right
         fixed
-        small
         @click="$vuetify.goTo(0)"
       >
         <v-icon>mdi-chevron-double-up</v-icon>
@@ -60,6 +75,11 @@
 <script>
 export default {
   name: 'app-header',
+  computed: {
+    activeSection() {
+      return this.$store.getters['app/section']
+    },
+  },
   data() {
     return {
       fab: false,
@@ -106,15 +126,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.dark-mode-toggle-button {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-}
 .transparent {
   background: transparent !important;
 }
-.app-btn.v-btn--active::before {
-  opacity: 0;
+.app-btn {
+  &.v-btn--active::before {
+    opacity: 0;
+  }
 }
 </style>
