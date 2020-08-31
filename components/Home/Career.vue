@@ -1,14 +1,10 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.mdAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-timeline
       class="mb-6"
-      :dense="$breakpoint.mdAndDown"
-      :class="`${!$breakpoint.mdAndDown ? 'px-12 mx-12' : ''}`"
+      :dense="$breakpoint.smAndDown"
+      :class="`${!$breakpoint.smAndDown ? 'px-12 mx-12' : ''}`"
     >
       <v-timeline-item
         v-for="(career, careerKey) in careers"
@@ -18,23 +14,15 @@
         fill-dot
       >
         <template v-slot:opposite>
-          <span
-            :class="`font-weight-bold ${career.color}--text`"
-            v-text="career.year"
-          ></span>
+          <span :class="`font-weight-bold ${career.color}--text`" v-text="career.year"></span>
         </template>
         <div class="py-2" v-scroll-reveal>
           <v-chip small :color="career.color" class="white--text mb-2">
             {{ career.type }}
             <v-icon right small class="px-1" v-text="career.icon"></v-icon>
           </v-chip>
-          <h6
-            :class="`${$breakpoint.mdAndDown ? 'subtitle-1' : 'text-h6'}`"
-            v-text="career.title"
-          ></h6>
-          <span v-show="$breakpoint.mdAndDown" class="text-subtitle-1"
-            >({{ career.year }})</span
-          >
+          <h6 :class="`${$breakpoint.smAndDown ? 'subtitle-1' : 'text-h6'}`" v-text="career.title"></h6>
+          <span v-show="$breakpoint.smAndDown" class="text-subtitle-1">({{ career.year }})</span>
           <p class="body-1 mt-2 text-caption" v-text="career.description"></p>
         </div>
       </v-timeline-item>
@@ -71,24 +59,24 @@ export default {
       title: 'Achievements & Career',
       careers: [
         {
-          title: 'Regional CAL Battle of the ICT Wizards Winner',
+          title: 'Won 3rd place on Web Design',
           year: 'November 2014',
           description:
-            '3rd Place Finisher on Web Design using Adobe Dreamweaver.',
+            'Won the 3rd Place on Web Design using Adobe Dreamweaver at CAL Battle of the ICT Wizards 2014 - Regionals.',
           ...careerType.AWARD,
         },
         {
-          title: 'National CAL Battle of the ICT Wizards Winner',
+          title: 'Won 2nd place on Web Design',
           year: 'January 2015',
           description:
-            '2nd Place Finisher on Web Design using Adobe Dreamweaver.',
+            'Won 2nd Place on Web Design using Adobe Dreamweaver at CAL Battle of the ICT Wizards - Nationals.',
           ...careerType.AWARD,
         },
         {
           title: 'Highschool Valedictorian',
           year: 'March 2015',
           description:
-            'Graduated Highschool at Sto. Rosario Montessori School Batch 2014-2015, along with other achievements.',
+            'Graduated Highschool as a valedictorian at Sto. Rosario Montessori School Batch 2014-2015, along with other awards.',
           ...careerType.AWARD,
         },
         {
@@ -105,7 +93,7 @@ export default {
           ...careerType.AWARD,
         },
         {
-          title: 'Technofest Web Design Competition: Technoweb Champions',
+          title: 'Technofest Web Design Competition Champions',
           year: 'March 2017',
           description:
             'Created a site for TechnoWeb Event using plain HTML, CSS, and Javascript.',

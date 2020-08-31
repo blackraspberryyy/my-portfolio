@@ -1,10 +1,6 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.mdAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-row justify="center" align-content="center">
       <v-col
         v-for="(skill, skillKey) in skills"
@@ -16,10 +12,7 @@
         class="ma-0"
       >
         <v-card class="fill-height">
-          <v-card-title
-            class="d-flex flex-column justify-center align-center"
-            v-scroll-reveal
-          >
+          <v-card-title class="d-flex flex-column justify-center align-center" v-scroll-reveal>
             <v-img
               class="flex-1 my-2"
               :src="skill.img"
@@ -40,16 +33,12 @@
           <v-card-text v-scroll-reveal>
             <h6 class="text-overline" v-text="hasExpWith"></h6>
             <ul>
-              <li v-for="(tech, techKey) in skill.tech" :key="techKey">
-                {{ tech }}
-              </li>
+              <li v-for="(tech, techKey) in skill.tech" :key="techKey">{{ tech }}</li>
             </ul>
             <div class="mt-4" v-show="skill.wantTechs">
               <h6 class="text-overline" v-text="wantExpWith"></h6>
               <ul>
-                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">
-                  {{ want }}
-                </li>
+                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">{{ want }}</li>
               </ul>
             </div>
           </v-card-text>
@@ -64,8 +53,8 @@ export default {
   data() {
     return {
       title: 'Skills & Technologies',
-      hasExpWith: 'Has experience with:',
-      wantExpWith: 'Want to learn:',
+      hasExpWith: 'Had worked with:',
+      wantExpWith: 'Also interested in learning:',
       skills: [
         {
           name: 'Frontend Web Development',
@@ -93,7 +82,7 @@ export default {
           name: 'Version Control',
           img: '/versionControl.svg',
           rating: 4,
-          tech: ['Github', 'GitLab', 'Bitbucket'],
+          tech: ['Github', 'GitLab', 'Bitbucket', 'GitFlow'],
         },
         {
           name: 'Mobile Development',

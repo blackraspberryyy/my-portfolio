@@ -1,10 +1,6 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.mdAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <v-row>
       <v-col
         v-for="(project, projectKey) in projects"
@@ -20,14 +16,10 @@
             :src="project.src"
             :alt="project.name"
             :contain="project.contain"
-            :aspect-ratio="$breakpoint.mdAndDown ? 1.33333 : 1.77778"
+            :aspect-ratio="$breakpoint.smAndDown ? 1.33333 : 1.77778"
             v-scroll-reveal
           >
-            <v-card-title
-              class="justify-end"
-              v-show="project.link"
-              v-scroll-reveal
-            >
+            <v-card-title class="justify-end" v-show="project.link" v-scroll-reveal>
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
@@ -57,14 +49,18 @@
               :key="techKey"
               small
               class="mr-1 mb-1"
-              >{{ tech }}</v-chip
-            >
+            >{{ tech }}</v-chip>
             <p class="mt-6" v-text="project.description"></p>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <v-btn class="mt-6 align-self-center" :small="$breakpoint.mdAndDown">
+    <v-btn
+      class="mt-6 align-self-center"
+      :small="$breakpoint.smAndDown"
+      href="https://github.com/blackraspberryyy?tab=repositories"
+      target="_blank"
+    >
       <v-icon class="mr-2">mdi-github</v-icon>
       <span>Complete List of Repositories</span>
     </v-btn>
@@ -94,7 +90,8 @@ export default {
       projects: [
         {
           name: 'My Portfolio',
-          description: 'A ton of info about me.',
+          description:
+            'A portfolio website for myself with a ton of information about me.',
           src: '/portfolio.png',
           techs: ['Nuxt.js', 'Vuetify', 'Vue'],
           link:
@@ -112,7 +109,7 @@ export default {
         {
           name: 'CrimeScoop',
           description:
-            'A Mobile Based App for allowing user to record and send crimes caught on act.',
+            'A Mobile Based App for allowing users to record and send crimes caught on act to baranggay official/s.',
           src: '/crimescoop.png',
           techs: ['React Native', 'Firebase'],
           link: 'https://github.com/blackraspberryyy/CrimeScoop',
@@ -130,7 +127,7 @@ export default {
         {
           name: 'Pet Manager App with Pet Locator using NFC',
           description:
-            "Mobile Based Pet Locating app, in partial fulfillment of PetEx, that uses NFC scanning to the pet's NFC tag on their collars.",
+            "Mobile Based Pet Locating app, in partial fulfillment of our Capstone Project, that uses NFC scanning to the pet's NFC tag on their collars.",
           src: '/petexApp.jpg',
           techs: ['Android (Java)'],
           link: 'https://github.com/blackraspberryyy/PetEx-Pet-Manager-App',
@@ -142,7 +139,7 @@ export default {
           src: '/binaryGame.gif',
           techs: ['Construct2'],
           contain: true,
-          ...projectType.PERSONAL,
+          ...projectType.SCHOOL,
         },
       ],
     }

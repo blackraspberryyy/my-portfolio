@@ -10,7 +10,7 @@ const defaults = {
   smAndUp: false,
   md: false,
   mdOnly: false,
-  mdAndDown: true,
+  smAndDown: true,
   mdAndUp: false,
   lg: false,
   lgOnly: false,

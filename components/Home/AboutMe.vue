@@ -1,25 +1,15 @@
 <template>
   <v-layout column>
-    <h4
-      class="text-h4 mb-4"
-      :class="{ 'text-h5': $breakpoint.mdAndDown }"
-      v-text="title"
-    ></h4>
+    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
     <p v-text="aboutMe"></p>
-    <v-row class="px-5" :class="{ 'px-0': $breakpoint.mdAndDown }">
+    <v-row class="px-5" :class="{ 'px-0': $breakpoint.smAndDown }">
       <v-col cols="12" sm="6" md="3" v-scroll-reveal>
         <h6 class="text-h6" v-text="infos.name"></h6>
         <v-list class="bg-transparent">
           <v-list-item v-for="(info, infoKey) in infos.items" :key="infoKey">
             <v-list-item-content class="py-2">
-              <v-list-item-title
-                v-text="info.title"
-                class="mb-2 no-wrap"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                v-text="info.description"
-                class="no-wrap"
-              ></v-list-item-subtitle>
+              <v-list-item-title v-text="info.title" class="mb-2 no-wrap"></v-list-item-title>
+              <v-list-item-subtitle v-text="info.description" class="no-wrap"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -32,14 +22,8 @@
             :key="workOptionKey"
           >
             <v-list-item-content class="py-2">
-              <v-list-item-title
-                v-text="workOption.title"
-                class="mb-2 no-wrap"
-              ></v-list-item-title>
-              <v-list-item-subtitle
-                v-text="workOption.description"
-                class="no-wrap"
-              ></v-list-item-subtitle>
+              <v-list-item-title v-text="workOption.title" class="mb-2 no-wrap"></v-list-item-title>
+              <v-list-item-subtitle v-text="workOption.description" class="no-wrap"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -47,32 +31,23 @@
       <v-col cols="12" sm="12" md="6" v-scroll-reveal>
         <h6 class="text-h6" v-text="educations.name"></h6>
         <v-list class="bg-transparent">
-          <v-list-item
-            v-for="(education, educationKey) in educations.items"
-            :key="educationKey"
-          >
+          <v-list-item v-for="(education, educationKey) in educations.items" :key="educationKey">
             <v-list-item-avatar size="64">
               <v-img :src="education.img" :alt="education.school" eager></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title
-                class="no-wrap"
-                v-text="education.school"
-              ></v-list-item-title>
+              <v-list-item-title class="no-wrap" v-text="education.school"></v-list-item-title>
               <v-list-item-subtitle
                 v-show="education.course"
                 v-text="education.course"
                 class="no-wrap font-italic"
               ></v-list-item-subtitle>
-              <v-list-item-subtitle class="mb-3 no-wrap"
-                >{{ education.title }} ({{
-                  education.year
-                }})</v-list-item-subtitle
-              >
-              <v-list-item-subtitle
-                v-text="education.description"
-                class="no-wrap"
-              ></v-list-item-subtitle>
+              <v-list-item-subtitle class="mb-3 no-wrap">
+                {{ education.title }} ({{
+                education.year
+                }})
+              </v-list-item-subtitle>
+              <v-list-item-subtitle v-text="education.description" class="no-wrap"></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>

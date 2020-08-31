@@ -5,8 +5,8 @@
       app
       floating
       disable-resize-watcher
-      :class="{ transparent: !$breakpoint.mdAndDown }"
-      :clipped="!$breakpoint.mdAndDown"
+      :class="{ transparent: !$breakpoint.smAndDown }"
+      :clipped="!$breakpoint.smAndDown"
     >
       <v-list
         shaped
@@ -18,7 +18,7 @@
           :key="linkKey"
           link
           class="link"
-          @click="drawer = $breakpoint.mdAndDown ? !drawer : !!drawer"
+          @click="drawer = $breakpoint.smAndDown ? !drawer : !!drawer"
         >
           <v-list-item-content>
             <v-list-item-title v-text="link.title"></v-list-item-title>
@@ -29,28 +29,27 @@
 
     <v-app-bar
       app
-      :dense="$breakpoint.mdAndDown"
-      :color="`${$breakpoint.mdAndDown ? 'primary' : 'none'}`"
-      :class="`${$breakpoint.mdAndDown ? 'opacity' : 'transparent'}`"
-      :flat="!$breakpoint.mdAndDown"
-      :clipped-left="!$breakpoint.mdAndDown"
-      :inverted-scroll="$breakpoint.mdAndDown"
+      :dense="$breakpoint.smAndDown"
+      :color="`${$breakpoint.smAndDown ? 'primary' : 'none'}`"
+      :class="`${$breakpoint.smAndDown ? 'opacity' : 'transparent'}`"
+      :flat="!$breakpoint.smAndDown"
+      :clipped-left="!$breakpoint.smAndDown"
+      :inverted-scroll="$breakpoint.smAndDown"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-slide-x-transition>
         <v-toolbar-title
           class="text-overline"
           v-text="links[activeSection].title"
-          v-show="(!$breakpoint.mdAndDown && drawer) || $breakpoint.mdAndDown"
-          >Page title</v-toolbar-title
-        >
+          v-show="(!$breakpoint.smAndDown && drawer) || $breakpoint.smAndDown"
+        >Page title</v-toolbar-title>
       </v-slide-x-transition>
       <v-spacer></v-spacer>
       <v-btn
         class="app-btn"
-        :small="!$breakpoint.mdAndDown"
-        :fab="!$breakpoint.mdAndDown"
-        :icon="$breakpoint.mdAndDown"
+        :small="!$breakpoint.smAndDown"
+        :fab="!$breakpoint.smAndDown"
+        :icon="$breakpoint.smAndDown"
         @click="darkMode()"
       >
         <v-icon>mdi-weather-night</v-icon>
