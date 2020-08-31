@@ -1,6 +1,11 @@
 <template>
   <v-layout column>
-    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      v-text="title"
+      style="font-family: 'PT Serif', serif !important"
+    ></h4>
     <p v-text="aboutMe"></p>
     <v-row class="px-5" :class="{ 'px-0': $breakpoint.smAndDown }">
       <v-col cols="12" sm="6" md="3" v-scroll-reveal>

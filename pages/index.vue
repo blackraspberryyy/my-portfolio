@@ -2,7 +2,7 @@
   <v-container
     style="max-width: 1024px;"
     class="mb-12"
-    v-scroll-spy="{ offset: $breakpoint.smAndDown ? 56 : 8, data: 'section' }"
+    v-scroll-spy="{ offset: $breakpoint.smAndDown ? 48 : 8, data: 'section' }"
   >
     <template v-for="(sectionComp, sectionKey) in sections">
       <component :is="sectionComp.section" :key="sectionKey" class="my-12 py-4"></component>

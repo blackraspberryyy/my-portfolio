@@ -29,12 +29,10 @@
 
     <v-app-bar
       app
+      flat
+      :color="$breakpoint.smAndDown ? '_white' : 'transparent'"
       :dense="$breakpoint.smAndDown"
-      :color="`${$breakpoint.smAndDown ? 'primary' : 'none'}`"
-      :class="`${$breakpoint.smAndDown ? 'opacity' : 'transparent'}`"
-      :flat="!$breakpoint.smAndDown"
       :clipped-left="!$breakpoint.smAndDown"
-      :inverted-scroll="$breakpoint.smAndDown"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-slide-x-transition>
@@ -57,7 +55,7 @@
     </v-app-bar>
     <v-fab-transition>
       <v-btn
-        v-scroll="onScroll"
+        v-scroll="fabOnScroll"
         v-show="fab"
         class="app-btn"
         fab
@@ -116,7 +114,7 @@ export default {
     darkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     },
-    onScroll(e) {
+    fabOnScroll(e) {
       if (typeof window === 'undefined') return
       const top = window.pageYOffset || e.target.scrollTop || 0
       this.fab = top > 728

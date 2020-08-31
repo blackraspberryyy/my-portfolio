@@ -1,6 +1,11 @@
 <template>
   <v-layout column>
-    <h4 class="text-h4 mb-4" :class="{ 'text-h5': $breakpoint.smAndDown }" v-text="title"></h4>
+    <h4
+      class="text-h4 mb-4"
+      :class="{ 'text-h5': $breakpoint.smAndDown }"
+      v-text="title"
+      style="font-family: 'PT Serif', serif !important"
+    ></h4>
     <v-timeline
       class="mb-6"
       :dense="$breakpoint.smAndDown"

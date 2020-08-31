@@ -50,7 +50,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Alata&family=Lato&display=swap',
+          'https://fonts.googleapis.com/css2?family=Alata&family=Lato&family=PT+Serif:wght@700&display=swap',
       },
     ],
   },
@@ -113,7 +113,7 @@ export default {
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
           _black: colors.black,
-          _white: colors.white,
+          _white: '#ffffff',
           _grey: colors.grey.lighten4,
         },
         dark: {
