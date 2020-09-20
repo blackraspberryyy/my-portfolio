@@ -29,7 +29,7 @@
         v-for="(tech, techKey) in techs"
         :key="techKey"
       >
-        <v-icon small :x-small="$breakpoint.smAndDown">mdi-pound</v-icon>
+        <v-icon left small :x-small="$breakpoint.smAndDown">mdi-pound</v-icon>
         {{ tech }}
       </v-chip>
     </div>

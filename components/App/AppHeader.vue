@@ -5,8 +5,8 @@
       app
       floating
       disable-resize-watcher
-      :color="`${!$breakpoint.smAndDown ? 'transparent' : ''}`"
-      :clipped="!$breakpoint.smAndDown"
+      :clipped="!vbreakpoint.mdAndDown"
+      :color="`${!vbreakpoint.mdAndDown ? 'transparent' : ''}`"
     >
       <v-list
         shaped
@@ -18,10 +18,10 @@
           :key="linkKey"
           link
           class="link"
-          @click="drawer = $breakpoint.smAndDown ? !drawer : !!drawer"
+          @click="drawer = vbreakpoint.smAndDown ? !drawer : !!drawer"
         >
           <v-list-item-content>
-            <v-list-item-title v-text="link.title"></v-list-item-title>
+            <v-list-item-title v-text="link.title" class="link-title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -47,16 +47,15 @@
       <div class="mt-4">
         <v-switch v-model="$vuetify.theme.dark" color="primary" inset flat>
           <template slot="prepend">
-            <v-icon :color="`${!$vuetify.theme.dark ? 'primary' : 'none'}`"
-              >mdi-weather-partly-cloudy</v-icon
-            >
+            <v-icon
+              :color="`${!$vuetify.theme.dark ? 'primary' : 'none'}`"
+            >mdi-weather-partly-cloudy</v-icon>
           </template>
           <template slot="append">
             <v-icon
               :color="`${$vuetify.theme.dark ? 'primary' : 'none'}`"
               style="margin-left: -16px;"
-              >mdi-weather-night</v-icon
-            >
+            >mdi-weather-night</v-icon>
           </template>
         </v-switch>
       </div>
@@ -66,9 +65,11 @@
         v-scroll="fabOnScroll"
         v-show="fab"
         fab
+        small
         bottom
         right
         fixed
+        color="primary"
         @click="$vuetify.goTo(0)"
       >
         <v-icon>mdi-chevron-double-up</v-icon>
@@ -79,13 +80,20 @@
 <script>
 export default {
   name: 'app-header',
+  mounted() {
+    this.isHydrated = true
+  },
   computed: {
     activeSection() {
       return this.$store.getters['app/section']
     },
+    vbreakpoint() {
+      return this.isHydrated ? this.$vuetify.breakpoint : {} // "empty" $breakpoint object with initial values
+    },
   },
   data() {
     return {
+      isHydrated: false,
       fab: false,
       activeLink: 1,
       drawer: false,
@@ -126,3 +134,13 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+.link {
+  &.v-list-item--active {
+    .link-title {
+      color: #3498da;
+      font-weight: bold;
+    }
+  }
+}
+</style>

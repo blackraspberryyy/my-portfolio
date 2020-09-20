@@ -12,7 +12,7 @@
       class="text-caption"
       :class="{ 'mb-4': !$breakpoint.smAndDown }"
       v-text="contactMe.description"
-    ></span>
+    />
     <div
       class="mt-2 d-flex justify-center align-center"
       :class="{ 'flex-column': $breakpoint.smAndDown }"

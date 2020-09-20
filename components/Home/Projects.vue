@@ -23,32 +23,27 @@
             :contain="project.contain"
             :aspect-ratio="$breakpoint.smAndDown ? 1.33333 : 1.77778"
             v-scroll-reveal
-          >
-            <v-card-title
-              class="justify-end"
-              v-show="project.link"
-              v-scroll-reveal
-            >
-              <v-tooltip top>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    small
-                    fab
-                    v-on="on"
-                    v-bind="attrs"
-                    color="primary"
-                    :href="project.link"
-                    target="_blank"
-                  >
-                    <v-icon>mdi-github</v-icon>
-                  </v-btn>
-                </template>
-                <span class="text-caption">Github Repository</span>
-              </v-tooltip>
-            </v-card-title>
-          </v-img>
+          />
+          <v-card-title>
+            <h6 class="text-h6" v-text="project.name" />
+            <v-spacer />
+            <v-tooltip top nudge-top="-4px">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  icon
+                  v-on="on"
+                  v-bind="attrs"
+                  class="elevation-0"
+                  :href="project.link"
+                  target="_blank"
+                >
+                  <v-icon>mdi-github</v-icon>
+                </v-btn>
+              </template>
+              <span class="text-caption">Github Repository</span>
+            </v-tooltip>
+          </v-card-title>
           <v-card-text v-scroll-reveal>
-            <h6 class="text-h6" v-text="project.name"></h6>
             <v-chip small class="mr-1 mb-1">
               <v-icon v-text="project.icon" left small></v-icon>
               <span v-text="project.type"></span>
@@ -58,22 +53,22 @@
               :key="techKey"
               small
               class="mr-1 mb-1"
-              >{{ tech }}</v-chip
-            >
+            >{{ tech }}</v-chip>
             <p class="mt-6" v-text="project.description"></p>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <v-btn
-      class="mt-6 align-self-center"
-      :small="$breakpoint.smAndDown"
-      href="https://github.com/blackraspberryyy?tab=repositories"
-      target="_blank"
-    >
-      <v-icon class="mr-2">mdi-github</v-icon>
-      <span>Complete List of Repositories</span>
-    </v-btn>
+    <div class="d-flex justify-center" :class="{'px-8':$breakpoint.smAndDown}">
+      <v-btn
+        class="mt-6"
+        href="https://github.com/blackraspberryyy?tab=repositories"
+        target="_blank"
+      >
+        <v-icon class="mr-2">mdi-github</v-icon>
+        <span>List of Repositories</span>
+      </v-btn>
+    </div>
   </v-layout>
 </template>
 <script>
@@ -135,7 +130,7 @@ export default {
           ...projectType.SCHOOL,
         },
         {
-          name: 'Pet Manager App with Pet Locator using NFC',
+          name: 'Pet Manager App',
           description:
             "Mobile Based Pet Locating app, in partial fulfillment of our Capstone Project, that uses NFC scanning to the pet's NFC tag on their collars.",
           src: '/petexApp.jpg',
