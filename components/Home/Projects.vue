@@ -4,7 +4,7 @@
       class="text-h4 mb-4"
       :class="{ 'text-h5': $breakpoint.smAndDown }"
       v-text="title"
-      style="font-family: 'PT Serif', serif !important"
+      style="font-family: 'PT Serif', serif !important;"
     ></h4>
     <v-row>
       <v-col
@@ -24,7 +24,11 @@
             :aspect-ratio="$breakpoint.smAndDown ? 1.33333 : 1.77778"
             v-scroll-reveal
           >
-            <v-card-title class="justify-end" v-show="project.link" v-scroll-reveal>
+            <v-card-title
+              class="justify-end"
+              v-show="project.link"
+              v-scroll-reveal
+            >
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
@@ -54,7 +58,8 @@
               :key="techKey"
               small
               class="mr-1 mb-1"
-            >{{ tech }}</v-chip>
+              >{{ tech }}</v-chip
+            >
             <p class="mt-6" v-text="project.description"></p>
           </v-card-text>
         </v-card>

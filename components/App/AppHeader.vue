@@ -5,7 +5,7 @@
       app
       floating
       disable-resize-watcher
-      :class="{ transparent: !$breakpoint.smAndDown }"
+      :color="`${!$breakpoint.smAndDown ? 'transparent' : ''}`"
       :clipped="!$breakpoint.smAndDown"
     >
       <v-list
@@ -37,27 +37,34 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-slide-x-transition>
         <v-toolbar-title
-          class="text-overline"
+          class="text-subtitle-1"
+          :class="{ 'pl-0': $breakpoint.smAndDown }"
           v-text="links[activeSection].title"
           v-show="(!$breakpoint.smAndDown && drawer) || $breakpoint.smAndDown"
-        >Page title</v-toolbar-title>
+        />
       </v-slide-x-transition>
       <v-spacer></v-spacer>
-      <v-btn
-        class="app-btn"
-        :small="!$breakpoint.smAndDown"
-        :fab="!$breakpoint.smAndDown"
-        :icon="$breakpoint.smAndDown"
-        @click="darkMode()"
-      >
-        <v-icon>mdi-weather-night</v-icon>
-      </v-btn>
+      <div class="mt-4">
+        <v-switch v-model="$vuetify.theme.dark" color="primary" inset flat>
+          <template slot="prepend">
+            <v-icon :color="`${!$vuetify.theme.dark ? 'primary' : 'none'}`"
+              >mdi-weather-partly-cloudy</v-icon
+            >
+          </template>
+          <template slot="append">
+            <v-icon
+              :color="`${$vuetify.theme.dark ? 'primary' : 'none'}`"
+              style="margin-left: -16px;"
+              >mdi-weather-night</v-icon
+            >
+          </template>
+        </v-switch>
+      </div>
     </v-app-bar>
     <v-fab-transition>
       <v-btn
         v-scroll="fabOnScroll"
         v-show="fab"
-        class="app-btn"
         fab
         bottom
         right
@@ -111,9 +118,6 @@ export default {
     }
   },
   methods: {
-    darkMode() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-    },
     fabOnScroll(e) {
       if (typeof window === 'undefined') return
       const top = window.pageYOffset || e.target.scrollTop || 0
@@ -122,13 +126,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.transparent {
-  background: transparent !important;
-}
-.app-btn {
-  &.v-btn--active::before {
-    opacity: 0;
-  }
-}
-</style>

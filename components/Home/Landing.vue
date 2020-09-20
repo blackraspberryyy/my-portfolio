@@ -54,7 +54,7 @@ export default {
       LOOKING: {
         icon: 'mdi-binoculars',
         description: 'Looking for work',
-        color: 'primary',
+        color: '',
       },
     }
 

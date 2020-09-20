@@ -4,7 +4,7 @@
       class="text-h4 mb-4"
       :class="{ 'text-h5': $breakpoint.smAndDown }"
       v-text="title"
-      style="font-family: 'PT Serif', serif !important"
+      style="font-family: 'PT Serif', serif !important;"
     ></h4>
     <v-row justify="center" align-content="center">
       <v-col
@@ -17,7 +17,10 @@
         class="ma-0"
       >
         <v-card class="fill-height">
-          <v-card-title class="d-flex flex-column justify-center align-center" v-scroll-reveal>
+          <v-card-title
+            class="d-flex flex-column justify-center align-center"
+            v-scroll-reveal
+          >
             <v-img
               class="flex-1 my-2"
               :src="skill.img"
@@ -38,12 +41,16 @@
           <v-card-text v-scroll-reveal>
             <h6 class="text-overline" v-text="hasExpWith"></h6>
             <ul>
-              <li v-for="(tech, techKey) in skill.tech" :key="techKey">{{ tech }}</li>
+              <li v-for="(tech, techKey) in skill.tech" :key="techKey">
+                {{ tech }}
+              </li>
             </ul>
             <div class="mt-4" v-show="skill.wantTechs">
               <h6 class="text-overline" v-text="wantExpWith"></h6>
               <ul>
-                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">{{ want }}</li>
+                <li v-for="(want, wantKey) in skill.wantTechs" :key="wantKey">
+                  {{ want }}
+                </li>
               </ul>
             </div>
           </v-card-text>
@@ -59,7 +66,7 @@ export default {
     return {
       title: 'Skills & Technologies',
       hasExpWith: 'Had worked with:',
-      wantExpWith: 'Also interested in learning:',
+      wantExpWith: 'Interested in learning:',
       skills: [
         {
           name: 'Frontend Web Development',
